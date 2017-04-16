@@ -6,4 +6,8 @@ class User < ApplicationRecord
     # render json: us_states
   end
 
+  def edit
+    
+  end
+
 end

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="col-md-5">
+    <h1>Edit Your Profile</h1>
+    <form action="/users" method="post">
+
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <div class="form-group">
+        <label for="first_name" class="control-label">First Name</label>
+        <input class="form-control" type="text" id="first_name" name = "user[first_name]" placeholder="Enter Your First Name">
+      </div>
+
+      <div class="form-group">
+        <label for="last_name" class="control-label">Last Name</label>
+        <input class="form-control" type="text" id="last_name" name = "user[last_name]" placeholder="Enter Your Last Name">
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="control-label">Email</label>
+        <input class="form-control" type="text" id="email" name = "user[email]" placeholder="Enter Your Email">
+      </div>
+
+      <div class="form-group">
+        <label for="location" class="control-label">Location</label>
+          <input class="form-control" type="text" id="location" name = "user[city]" placeholder="City Name">
+
+          <select class="form-control">
+            <% us_states.each do |state| %>
+              <option name="user[state]" value=""><%= state[0] %></option>
+            <% end %>
+          </select> 
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-3">
+          <input class="btn btn-success" type="submit" name="Register" value="Update Records">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
