@@ -1,41 +1,49 @@
 <div class="container">
   <div class="col-md-5">
     <h1>Edit Your Profile</h1>
-    <form action="/users" method="post">
+
+    <form action="/users/<%= @user.id %>" method="post">
 
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="patch"> 
 
       <div class="form-group">
         <label for="first_name" class="control-label">First Name</label>
-        <input class="form-control" type="text" id="first_name" name = "user[first_name]" placeholder="Enter Your First Name">
+        <input class="form-control" type="text" id="first_name" name = "user[first_name]" value="<%= @user.first_name %>">
       </div>
 
       <div class="form-group">
         <label for="last_name" class="control-label">Last Name</label>
-        <input class="form-control" type="text" id="last_name" name = "user[last_name]" placeholder="Enter Your Last Name">
+        <input class="form-control" type="text" id="last_name" name = "user[last_name]" value="<%= @user.last_name %>">
       </div>
 
       <div class="form-group">
         <label for="email" class="control-label">Email</label>
-        <input class="form-control" type="text" id="email" name = "user[email]" placeholder="Enter Your Email">
+        <input class="form-control" type="text" id="email" name = "user[email]" value="<%= @user.email %>">
       </div>
 
       <div class="form-group">
         <label for="location" class="control-label">Location</label>
-          <input class="form-control" type="text" id="location" name = "user[city]" placeholder="City Name">
+          <input class="form-control" type="text" id="location" name = "user[city]" value="<%= @user.city %>">
 
-          <select class="form-control">
+          <select class="form-control" name="user[state]">
             <% us_states.each do |state| %>
-              <option name="user[state]" value=""><%= state[0] %></option>
+              <% if state[0] == @user.state %>
+                <option value="<%= @user.state %>"><%= @user.state %></option>
+              <% else %>
+                <option value="<%= state[0] %>"><%= state[0] %></option>
+              <% end %>
             <% end %>
           </select> 
       </div>
 
       <div class="form-group">
         <div class="col-sm-3">
-          <input class="btn btn-success" type="submit" name="Register" value="Update Records">
+          <input class="btn btn-info" type="submit" name="Register" value="Update Records">
         </div>
       </div>
     </form>
+    <br><br>
+    <a href="/events">Cancel</a>
   </div>
 </div>
